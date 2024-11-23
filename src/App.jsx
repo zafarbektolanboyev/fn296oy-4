@@ -148,7 +148,7 @@ function App() {
                 <div className="select flex mb-10 flex-row">
                   <label className="w-[50%] flex flex-col">
                     <span>Davlat</span>
-                    <select className="select select-bordered w-full max-w-xs">
+                    <select name="country" className="select select-bordered w-full max-w-xs">
                       <option disabled selected>
                         O'zbekiston
                       </option>
@@ -159,7 +159,7 @@ function App() {
                   </label>
                   <label className="w-[50%] flex flex-col mb-5">
                     <span>Shaxar</span>
-                    <select className="select select-bordered w-full max-w-xs">
+                    <select name="city" className="select select-bordered w-full max-w-xs">
                       <option disabled selected>
                         Toshkent
                       </option>
@@ -192,6 +192,7 @@ function App() {
                     <span className="label-text">Izoh</span>
                   </div>
                   <textarea
+                    name="deck"
                     className="textarea textarea-bordered h-24"
                     placeholder="Kompaniya haqida izoh qoldiring"
                   ></textarea>
@@ -209,19 +210,23 @@ function App() {
         )}
         <div className="grid grid-cols-2 pb-12 ml-[190px]">
           {users.length > 0 &&
-            users.map(function ({ companyName, email, tel, url }, index) {
+            users.map(function ({ companyName, deck, city, location, numWork, country, email, tel, url }, index) {
               return (
                 <div
                   key={index}
                   className="card justify-center py-2 pb-5 bg-base-100 w-96 shadow-xl"
                 >
                   <div className="card-body">
-                    <h2>{companyName}</h2>
-                    <h4>{email}</h4>
-                    <h4>{tel}</h4>
+                    <h2>Nomi:{companyName}</h2>
+                    <h4>Email:{email}</h4>
+                    <h4>Telefon {tel}</h4>
+                    <h4>Davlat va shaxari:{country} {city}</h4>
+                    <h4>Yashash joyi:{location}</h4>
+                    <h4>Hodimlar soni:{numWork}</h4>
+                    <p>Izoh:{deck}</p>
                   </div>
                   <figure>
-                    <img src={url} alt="" />
+                    <img src={url} className="w-[100px] h-[100px]" alt="" />
                   </figure>
                 </div>
               );
